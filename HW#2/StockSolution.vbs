@@ -342,4 +342,3 @@ Sub StockAnalysisHardMulti()
     Next wks
 
 End Sub
-
