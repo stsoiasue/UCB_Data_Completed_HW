@@ -4,7 +4,6 @@ Heros of Pymoli Data Analysis
 - Observed Trend 2: The Age group with the most number of players is 20-24.
 - Observed Trend 3: The most popular item (Mourning Blade) is also the most profitable item despite the fact that it is not the most expensive.
 
-
 ```python
 # import dependencies
 import pandas as pd
@@ -14,7 +13,7 @@ import os
 
 ```python
 # assign file path to variable
-pymo_file = os.path.join('HeroesOfPymoli', 'purchase_data2.json')
+pymo_file = os.path.join('purchase_data2.json')
 ```
 
 
