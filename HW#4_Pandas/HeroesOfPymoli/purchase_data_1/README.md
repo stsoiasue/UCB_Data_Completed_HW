@@ -314,13 +314,25 @@ purch_analysis_gdr = purch_analysis_gdr.rename(columns={
     'mean': 'Avg Price',
     'sum': 'Total Revenue'
 })
-normalized_total_gdr = purch_analysis_gdr['Total Revenue'] / purch_analysis_gdr['Total Purchases']
+
+# add gender count to gender purchase analysis
+purch_analysis_gdr['Player Count'] = pymo_gdr_count
+
+# calculate normalized total
+normalized_total_gdr = purch_analysis_gdr['Total Revenue'] / purch_analysis_gdr['Player Count']
 purch_analysis_gdr['Total Revenue (Normalized)'] = normalized_total_gdr
 
 # format columns with currency values
 purch_analysis_gdr['Avg Price'] = purch_analysis_gdr['Avg Price'].map("${:.2f}".format)
 purch_analysis_gdr['Total Revenue'] = purch_analysis_gdr['Total Revenue'].map("${:.2f}".format)
 purch_analysis_gdr['Total Revenue (Normalized)'] = purch_analysis_gdr['Total Revenue (Normalized)'].map("${:.2f}".format)
+
+# rearrange columns
+purch_analysis_gdr = purch_analysis_gdr[[
+    'Player Count', 'Total Purchases',
+    'Avg Price', 'Total Revenue',
+    'Total Revenue (Normalized)'
+]]   
 
 purch_analysis_gdr
 ```
@@ -346,6 +358,7 @@ purch_analysis_gdr
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Player Count</th>
       <th>Total Purchases</th>
       <th>Avg Price</th>
       <th>Total Revenue</th>
@@ -357,29 +370,33 @@ purch_analysis_gdr
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>Female</th>
+      <td>100</td>
       <td>136</td>
       <td>$2.82</td>
       <td>$382.91</td>
-      <td>$2.82</td>
+      <td>$3.83</td>
     </tr>
     <tr>
       <th>Male</th>
+      <td>465</td>
       <td>633</td>
       <td>$2.95</td>
       <td>$1867.68</td>
-      <td>$2.95</td>
+      <td>$4.02</td>
     </tr>
     <tr>
       <th>Other / Non-Disclosed</th>
+      <td>8</td>
       <td>11</td>
       <td>$3.25</td>
       <td>$35.74</td>
-      <td>$3.25</td>
+      <td>$4.47</td>
     </tr>
   </tbody>
 </table>
@@ -421,7 +438,7 @@ pymo_age_pct = round(pymo_age_count / player_count, 4) * 100
 
 # add count and percentage to summary DataFrame
 age_demo = pd.DataFrame({
-    'Player count': pymo_age_count,
+    'Player Count': pymo_age_count,
     'Percentage of Players': pymo_age_pct
 })
 age_demo
@@ -453,7 +470,7 @@ age_demo
     <tr style="text-align: right;">
       <th></th>
       <th>Percentage of Players</th>
-      <th>Player count</th>
+      <th>Player Count</th>
     </tr>
     <tr>
       <th>Age Groups</th>
@@ -521,13 +538,24 @@ purch_analysis_age = purch_analysis_age.rename(columns={
     'sum': 'Total Revenue'
 })
 
-normalized_total_age = round(purch_analysis_age['Total Revenue'] / purch_analysis_age['Total Purchases'], 2)
+# add gender count to gender purchase analysis
+purch_analysis_age['Player Count'] = pymo_age_count
+
+# calculate normalized total
+normalized_total_age = purch_analysis_age['Total Revenue'] / purch_analysis_age['Player Count']
 purch_analysis_age['Total Revenue (Normalized)'] = normalized_total_age
 
 # format columns with currency values
 purch_analysis_age['Avg Price'] = purch_analysis_age['Avg Price'].map("${:.2f}".format)
 purch_analysis_age['Total Revenue'] = purch_analysis_age['Total Revenue'].map("${:.2f}".format)
 purch_analysis_age['Total Revenue (Normalized)'] = purch_analysis_age['Total Revenue (Normalized)'].map("${:.2f}".format)
+
+# rearrange columns
+purch_analysis_age = purch_analysis_age[[
+    'Player Count', 'Total Purchases',
+    'Avg Price', 'Total Revenue',
+    'Total Revenue (Normalized)'
+]]   
 
 purch_analysis_age
 ```
@@ -553,6 +581,7 @@ purch_analysis_age
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Player Count</th>
       <th>Total Purchases</th>
       <th>Avg Price</th>
       <th>Total Revenue</th>
@@ -564,64 +593,73 @@ purch_analysis_age
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>&lt;10</th>
+      <td>19</td>
       <td>28</td>
       <td>$2.98</td>
       <td>$83.46</td>
-      <td>$2.98</td>
+      <td>$4.39</td>
     </tr>
     <tr>
       <th>10-14</th>
+      <td>23</td>
       <td>35</td>
       <td>$2.77</td>
       <td>$96.95</td>
-      <td>$2.77</td>
+      <td>$4.22</td>
     </tr>
     <tr>
       <th>15-19</th>
+      <td>100</td>
       <td>133</td>
       <td>$2.91</td>
       <td>$386.42</td>
-      <td>$2.91</td>
+      <td>$3.86</td>
     </tr>
     <tr>
       <th>20-24</th>
+      <td>259</td>
       <td>336</td>
       <td>$2.91</td>
       <td>$978.77</td>
-      <td>$2.91</td>
+      <td>$3.78</td>
     </tr>
     <tr>
       <th>25-29</th>
+      <td>87</td>
       <td>125</td>
       <td>$2.96</td>
       <td>$370.33</td>
-      <td>$2.96</td>
+      <td>$4.26</td>
     </tr>
     <tr>
       <th>30-34</th>
+      <td>47</td>
       <td>64</td>
       <td>$3.08</td>
       <td>$197.25</td>
-      <td>$3.08</td>
+      <td>$4.20</td>
     </tr>
     <tr>
       <th>35-39</th>
+      <td>27</td>
       <td>42</td>
       <td>$2.84</td>
       <td>$119.40</td>
-      <td>$2.84</td>
+      <td>$4.42</td>
     </tr>
     <tr>
       <th>40+</th>
+      <td>11</td>
       <td>17</td>
       <td>$3.16</td>
       <td>$53.75</td>
-      <td>$3.16</td>
+      <td>$4.89</td>
     </tr>
   </tbody>
 </table>
