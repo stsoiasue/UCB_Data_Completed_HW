@@ -506,7 +506,7 @@ plt.show()
 ```
 
 
-![png](output_9_0.png)
+![png](plots/Tumor_Volume_Change.png)
 
 
 
@@ -812,7 +812,7 @@ plt.show()
 ```
 
 
-![png](output_12_0.png)
+![png](plots/Metastatic_Site_Change.png)
 
 
 
@@ -1057,7 +1057,7 @@ plt.show()
 ```
 
 
-![png](output_14_0.png)
+![png](plots/Survival_Rates.png)
 
 
 
@@ -1128,10 +1128,10 @@ plt.title('Tumor Volume Change over 45 Days', fontsize=18)
 plt.xlabel('Test Drugs', fontsize=15)
 plt.ylabel('Tumor Volume Change (%)', fontsize=15)
 
-plt.savefig('plots/Total_Tumor Volume_Change.png')
+plt.savefig('plots/Total_Tumor_Volume_Change.png')
 plt.show()
 ```
 
 
-![png](output_15_0.png)
+![png](plots/Total_Tumor_Volume_Change.png)
 
