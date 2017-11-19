@@ -1,4 +1,8 @@
+Observable Trends:
 
+- Ramicane and Capomulin appear to be the most effective drugs with the greatest decrease in tumor volume over the course of the study
+- Ketapril and Naftisol appear to be the least effective drugs with the greatest increase in tumor volume over the course of the study
+-  Ceftamin's survival rate is the lowest despite having one of the lower tumor volume increases
 
 ```python
 # import dependencies
