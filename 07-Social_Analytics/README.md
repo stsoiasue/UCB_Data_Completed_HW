@@ -2,8 +2,8 @@
 Observed Trends
 
 - None of the news sources are overwhelmingly positive or negative based on the Vader scale (-1 to 1)
-- CBS's 100 tweets are more positive that than the other news orgs.
-- The Nytimes's 100 tweets are more negative that than the other news orgs.
+- CBS's 100 tweets are more positive than the other news orgs.
+- The Nytimes's 100 tweets are more negative than the other news orgs.
 
 
 ```python
