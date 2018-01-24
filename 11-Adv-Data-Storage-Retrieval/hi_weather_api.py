@@ -36,8 +36,8 @@ def welcome():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br>"
         f"/api/v1.0/tobs<br>"
-        f"/api/v1.0/<start><br>"
-        f"/api/v1.0/<start>/<end><br>"
+        f"/api/v1.0/after/'enter start date in %Y-%m-%d format'<br>"
+        f"/api/v1.0/between/'enter start date in %Y-%m-%d format'/'enter end date in %Y-%m-%d format'<br>"
     )
 
 # precipitaion
@@ -112,9 +112,42 @@ def tobs():
     return jsonify(tobs_list)
 
 # start end
-@app.route("/api/v1.0/<start>")
-@app.route("/api/v1.0/<start>/<end>")
-def temp_analysis(start='2017-01-01', end='2017-12-31'):
+@app.route("/api/v1.0/after")
+@app.route("/api/v1.0/after/<start>")
+def temp_analysis_after(start='2017-01-01'):
+    
+    # query for min temp
+    temp_min = (session
+                .query(func.min(Measurement.tobs))
+                .filter(Measurement.date >= start)
+                .scalar())
+    
+    # query for max temp
+    temp_max = (session
+                .query(func.max(Measurement.tobs))
+                .filter(Measurement.date >= start)
+                .scalar())  
+    
+    # query for average temp
+    temp_avg = (session
+                .query(func.avg(Measurement.tobs))
+                .filter(Measurement.date >= start)
+                .scalar())
+    
+    temp_analysis_dict= {}
+    
+    temp_analysis_dict['min'] = temp_min
+    
+    temp_analysis_dict['max'] = temp_max
+    
+    temp_analysis_dict['average'] = temp_avg
+    
+    return jsonify(temp_analysis_dict)
+
+
+@app.route("/api/v1.0/between")
+@app.route("/api/v1.0/between/<start>/<end>")
+def temp_analysis_between(start='2017-01-01', end='2017-12-31'):
     
     # query for min temp
     temp_min = (session
@@ -146,7 +179,6 @@ def temp_analysis(start='2017-01-01', end='2017-12-31'):
     temp_analysis_dict['average'] = temp_avg
     
     return jsonify(temp_analysis_dict)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
