@@ -5,7 +5,7 @@ from splinter import Browser
 import requests as req
 import re
 
-def scrape:
+def scrape():
 
     # dictionary to hold scraped data
     scraped_data = {}
@@ -51,13 +51,10 @@ def scrape:
     jpl_soup = bs(response.text, "html.parser")
 
     # find div with carosel_items class
-    featured_image_url = jpl_soup.find('div', class_='carousel_items')
+    featured_image_url = jpl_soup.find('a', class_='fancybox')
 
     # reassign to style attribute of div
-    featured_image_url = featured_image_url.article['style']
-
-    # find image url suffix
-    featured_image_url = re.search(r"background-image: url\('(\S+)'\)", featured_image_url).group(1)
+    featured_image_url = featured_image_url['data-fancybox-href']
 
     # add jpl website prefix
     featured_image_url = 'https://www.jpl.nasa.gov' + featured_image_url
