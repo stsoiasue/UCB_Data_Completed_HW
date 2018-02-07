@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Truth is Out There</title>
+</head>
+<body>
+    
+    <h1>The Truth is Out There</h1>
+    
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="dateSearchValue"><strong>Date</strong></label>
+            <input type="text" id="dateSearchValue" placeholder="Enter Date">
+            <button type='submit' id='submit'>Search by Date</button>
+        </div>
+    </form>
+
+    <div>
+        <table id="sightingsTable">
+            <tr>    
+                <th>date/time</th>
+                <th>city</th> 
+                <th>state</th>
+                <th>country</th>
+                <th>shape</th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="Data/data.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="dataGrab.js"></script>
+
+</body>
+</html>
