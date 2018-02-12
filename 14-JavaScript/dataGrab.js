@@ -19,7 +19,7 @@ function grabData(event) {
     // change origial dataset to avoid mutation
     var filteredData = dataSet.concat();
 
-    // loop through query data points
+    // loop through query data points and filter
     for (var key in queryData) {
         filteredData = filteredData.filter (function(data) {
             if (queryData[key] === "" || queryData[key] === data[key]) {
