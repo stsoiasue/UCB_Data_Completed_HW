@@ -21,9 +21,9 @@ def names():
 @app.route('/otu')
 def otu():
     # query db otu descriptions
-    otu_desc = session.query(OTU).all()
+    otu_desc = session.query(OTU)
     # convert to list of values rather than list of tuples
-    otu_desc = [description.lowest_taxonomic_unit_found for description in otu_desc]
+    otu_desc = {desc.otu_id: desc.lowest_taxonomic_unit_found for desc in otu_desc}
     return jsonify(otu_desc)
 
 # return metadata for a given sample
