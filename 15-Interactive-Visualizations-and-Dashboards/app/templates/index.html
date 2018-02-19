@@ -1,11 +1,35 @@
 {% extends "layout.html" %}
 {% block content %}
-    <select id='selDataset' onchange="optionChanged(this.value)">
-    </select>
+    <div class='row'>
+        <div class='col-md-2'>
+            <div id='dropdownDiv'>
+                <p><strong>SELECT Sample</strong></p>
+                <select id='selDataset' onchange="optionChanged(this.value)"></select>
+                <br>
+            </div>
+            
+            <br>
 
-    <div id='pie'></div>
+            <div id='metaContainer'>
+                <h4>Sample MetaData</h4>
+                <ul id='metadata' class="list"></ul>
+            </div>
+        </div>
+        
+        <div class='col-md-5'>
+            <div id='pie'></div>
+        </div>
 
-    <div id='bubble'></div>
+        <div class='col-md-5'>
+            <div id='gauge'></div>
+        </div>
+    </div>
 
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div id='bubble'></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 {% endblock %}
